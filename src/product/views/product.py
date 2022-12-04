@@ -16,11 +16,11 @@ class CreateProductView(generic.TemplateView):
 
 class ProductView(View):
     def get(self, request):
-        #products = Product.objects.values('id','title','description')
+        products = Product.objects.values('id','title','description')
         product_varient = ProductVariant.objects.values('id','variant_title')
         print(product_varient)
         return render(request, 'products/list.html'
-        # ,{
-        #     'products':products,
-        # }
+        ,{
+            'products':products,
+        }
         )
