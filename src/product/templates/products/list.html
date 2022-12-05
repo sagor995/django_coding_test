@@ -63,47 +63,34 @@
                         {% for product in products %}
                             <tr>
                                 <td>{{forloop.counter}}</td>
-                                <td>{{product.title}} <br> Created at : 25-Aug-2020</td>
+                                <td>{{product.title}} <br> Created at : {{product.created_at|date:'d-M-Y'}}</td>
                                 <td>{{product.description}}</td>
+                                
                                 <td>
+                                    
                                     <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
-                                        <dt class="col-sm-3 pb-0">
-                                            XL/ Black/ Full
-                                        </dt>
-                                        <dd class="col-sm-9">
-                                            <dl class="row mb-0">
-                                                <dd class="col-sm-4 pb-0">Price : 200.0</dd>
-                                                <dd class="col-sm-8 pb-0">InStock : 50.</dd>
-                                            </dl>
-                                        </dd>
-                                        <dt class="col-sm-3 pb-0">
-                                            XL/ Black/ Half
-                                        </dt>
-                                        <dd class="col-sm-9">
-                                            <dl class="row mb-0">
-                                                <dd class="col-sm-4 pb-0">Price : 200.0</dd>
-                                                <dd class="col-sm-8 pb-0">InStock : 50.</dd>
-                                            </dl>
-                                        </dd>
-                                        <dt class="col-sm-3 pb-0">
-                                            L/ Black/ Full
-                                        </dt>
-                                        <dd class="col-sm-9">
-                                            <dl class="row mb-0">
-                                                <dd class="col-sm-4 pb-0">Price : 200.0</dd>
-                                                <dd class="col-sm-8 pb-0">InStock : 50.</dd>
-                                            </dl>
-                                        </dd>
-                                        <dt class="col-sm-3 pb-0">
-                                            L/ Black/ Half
-                                        </dt>
-                                        <dd class="col-sm-9">
-                                            <dl class="row mb-0">
-                                                <dd class="col-sm-4 pb-0">Price : 200.0</dd>
-                                                <dd class="col-sm-8 pb-0">InStock : 50.</dd>
-                                            </dl>
-                                        </dd>
+                                        {% for var in product.varient %}
+                                            
+                                            
+                                        
+                                            <dt class="col-sm-3 pb-0">
+                                                {{var.pvp}}
+                                            </dt>
+                                            <dd class="col-sm-9">
+                                                <dl class="row mb-0">
+                                                    <dd class="col-sm-4 pb-0">
+                                                        Price : {{var.price}}
+                                                    </dd>
+                                                    <dd class="col-sm-8 pb-0">
+                                                        InStock : {{var.stock}}.
+                                                    </dd>
+                                                </dl>
+                                            </dd>
+                                        {% endfor %} 
                                     </dl>
+                                    
+
+
                                     <button onclick="$('#variant').toggleClass('h-auto')" class="btn btn-sm btn-link">Show more
                                     </button>
                                 </td>
